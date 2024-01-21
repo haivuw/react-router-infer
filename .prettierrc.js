@@ -1,4 +1,4 @@
-/**  @type {import('prettier').Config} */
+/** @type {import('prettier').Config} */
 const config = {
   plugins: ['./node_modules/prettier-plugin-jsdoc/dist/index.js'],
   semi: false,

@@ -11,9 +11,7 @@ export const createWrapper =
     memoryRouterOpts?: MemoryRouterOpts
   }): RenderOptions['wrapper'] =>
   (wrapperProps: {
-    /**
-     * children is where the tested hook/element is rendered
-     */
+    /** Children is where the tested hook/element is rendered */
     children: React.ReactNode
   }) => {
     const { routes, memoryRouterOpts } = createWrapperOpts

@@ -60,7 +60,7 @@
   "scripts": {
     "type": "tsc --noEmit",
     "lint": "eslint .",
-    "prettier.check": "prettier --list-different src",
+    "prettier.check": "prettier --list-different .",
     "build": "tsup",
     "test": "bun test",
     "test:register": "cd test/register && tsc --noEmit",

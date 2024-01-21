@@ -28,6 +28,7 @@ const router = createBrowserRouter(
     routes: routes,
     /**
      * Optionally customize search params stringify and parse functions
+     *
      * @see https://tanstack.com/router/v1/docs/guide/custom-search-param-serialization
      */
     // stringifySearch,

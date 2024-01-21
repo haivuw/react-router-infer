@@ -19,7 +19,7 @@ const Pokemon = (props: { pokemon: NamedAPIResource }) => {
 
   return (
     <div className='flex flex-col items-center'>
-      {/** */}
+      {}
       <strong className='text-slate-500'>{name}</strong>
       <img className='w-full' src={imgUrl(data?.id ?? 0)} />
     </div>
