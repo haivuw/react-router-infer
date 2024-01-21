@@ -45,8 +45,11 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.2.4",
+    "prettier-plugin-jsdoc": "^1.3.0",
     "size-limit": "^11.0.2",
     "tsup": "^8.0.1",
+    "typedoc": "^0.25.7",
+    "typedoc-plugin-markdown": "^3.17.1",
     "typescript": "^5.3.3",
     "zod": "^3.22.4"
   },
@@ -61,7 +64,8 @@
     "build": "tsup",
     "test": "bun test",
     "test:register": "cd test/register && tsc --noEmit",
-    "size": "size-limit"
+    "size": "size-limit",
+    "docs": "typedoc --plugin ./typedoc-plugin-display-type.js --plugin typedoc-plugin-markdown --out docs --includeVersion --excludeNotDocumented src/index.ts"
   },
   "size-limit": [
     {

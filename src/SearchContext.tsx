@@ -70,36 +70,30 @@ export const SearchParamsProvider = ({
 
 export type SearchParamsProviderProps = {
   children: React.ReactNode
-  /**
-   *
-   * User defined routes
-   */
+  /** User defined routes */
   routes: RouteObject[]
-  /**
-   *
-   * Override the default search stringifier
-   */
+  /** Override the default search stringifier */
   stringifySearch?: (s: ParsedSearch) => string
-  /**
-   *
-   * Override the default search parser
-   */
+  /** Override the default search parser */
   parseSearch?: (s: string) => ParsedSearch
 }
 
 /**
- *
  * Wraps user defined routes with {@link SearchParamsProvider}
- * @example
- * // with data router
- * const router = createBrowserRouter(
- *     withSearchParamsProvider({ routes }),
- * )
  *
- * // with useRoutes
- * const RoutesElement = useRoutes(
- *     withSearchParamsProvider({ routes }),
- * )
+ * @example
+ *   // with data router
+ *   const router = createBrowserRouter(withSearchParamsProvider({ routes }))
+ *
+ *   // with useRoutes
+ *   const RoutesElement = useRoutes(withSearchParamsProvider({ routes }))
+ *
+ *   // custom search parser/stringifier
+ *   withSearchParamsProvider({
+ *     routes,
+ *     parseSearch: () => {},
+ *     stringifySearch: () => {},
+ *   })
  */
 export const withSearchParamsProvider = (
   props: Omit<SearchParamsProviderProps, 'children'>,
@@ -118,7 +112,8 @@ export const withSearchParamsProvider = (
 }
 
 /**
- * Stable context for parser/stringifier. Consumers shouldn't re-render because of this context.
+ * Stable context for parser/stringifier. Consumers shouldn't re-render because
+ * of this context.
  */
 type ParserContext = Pick<
   SearchParamsProviderProps,

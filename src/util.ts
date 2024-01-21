@@ -2,9 +2,7 @@ import RR from 'react-router-dom'
 
 export type EmptyOutput = Expand<Record<never, never>> // {}
 
-/**
- *  if params is never, return {@link EmptyOutput}
- */
+/** If params is never, return {@link EmptyOutput} */
 export type ToObject<T extends Record<string, unknown> | never> =
   [T] extends [never] ? EmptyOutput : T
 

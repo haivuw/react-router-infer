@@ -2,15 +2,14 @@ import * as RR from 'react-router-dom'
 import { ExpandRecursively, MergeObject, UnionToIntersection } from './util'
 
 /**
- *
  * Maps array of {@link RouteObject} to {@link BaseRoutes }
  *
  * @example
- * const routes = [...] as const satisfies RouteObject[]
+ *   const routes = [...] as const satisfies RouteObject[]
  *
- * declare module 'packageName' {
+ *   declare module 'packageName' {
  *   register: CreateRoutes<typeof routes>
- * }
+ *   }
  */
 export type CreateRoutes<T extends RouteObject[]> = IndexByPath<MapChildren<T>>
 
@@ -21,32 +20,24 @@ export type Route<
   Params extends ParsedParams = ParsedParams,
   Search extends ParsedSearch = ParsedSearch,
 > = {
-  /**
-   * Full path of the route
-   */
+  /** Full path of the route */
   path: FullPath
-  /**
-   * Aggregated path params of the route and its parents
-   */
+  /** Aggregated path params of the route and its parents */
   params: Params
-  /**
-   * Aggregated search params of the route and its parents
-   */
+  /** Aggregated search params of the route and its parents */
   search: Search
   // pathTemplate: ToPathTemplate<FullPath>
 }
 
 export type BaseRoutes = Record<string, Route>
 
-/**
- * Extends `react-router-dom`'s `RouteObject` with `parseSearch` fields
- */
+/** Extends `react-router-dom`'s `RouteObject` with `parseSearch` fields */
 export type RouteObject = Omit<RR.RouteObject, 'children'> & {
   children?: RouteObject[]
   /**
-   *
    * @param raw Untyped search params parsed from URL
-   * @returns Typed search params that is used by `useSearch`, `useParams`, `useNavigate`, `Link`, etc.
+   * @returns Typed search params that is used by `useSearch`, `useParams`,
+   *   `useNavigate`, `Link`, etc.
    */
   parseSearch?: (raw: RawSearch) => ParsedSearch
 }
@@ -86,9 +77,7 @@ type Flatten<
   ...MapChildren<T['children'], FullPath, Params, Search>,
 ]
 
-/**
- * Creates a map of {@link Route} indexed by their absolute `path`.
- */
+/** Creates a map of {@link Route} indexed by their absolute `path`. */
 type IndexByPath<T extends Route[]> = {
   [K in Extract<keyof T, `${number}`> as T[K] extends Route ? T[K]['path']
   : never]: ExpandRecursively<UnionToIntersection<T[K]>>
@@ -139,22 +128,22 @@ type RawSearch = Record<string, unknown>
 export type ParsedSearch = Record<string, unknown>
 
 /**
+ * Create a readonly route object. Same as `{...} as const satisfies
+ * RouteObject`.
  *
- * Create a readonly route object. Same as `{...} as const satisfies RouteObject`.
  * @example
- * const routes = r([...])
+ *   const singleRoute = r({ path: '/' })
+ *   const allRoutes = r([singleRoute])
  *
- * declare module 'x' {
- *   register: CreateRoutes<typeof routes>
- * }
+ *   declare module 'x' {
+ *     register: CreateRoutes<typeof allRoutes>
+ *   }
  */
 export const r = <const T extends RouteObject | RouteObject[]>(
   routeOrRoutes: T,
 ) => routeOrRoutes
 
 export type ScopeOptions<Path extends string> = {
-  /**
-   * Narrow down path/search params to a specific path
-   */
+  /** Narrow down path/search params to a specific path */
   from?: Path
 }

@@ -25,9 +25,7 @@ export {
   type SearchParamsProviderProps,
 } from './SearchContext'
 
-/**
- * @see https://tanstack.com/router/v1/docs/guide/custom-search-param-serialization
- */
+/** @see https://tanstack.com/router/v1/docs/guide/custom-search-param-serialization */
 export {
   parseSearchWith,
   stringifySearchWith,

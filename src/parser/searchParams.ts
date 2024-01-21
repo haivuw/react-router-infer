@@ -1,6 +1,4 @@
-/**
- * @see https://github.com/TanStack/router/blob/main/packages/react-router/src/searchParams.ts
- */
+/** @see https://github.com/TanStack/router/blob/main/packages/react-router/src/searchParams.ts */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { decode, encode } from './qss'

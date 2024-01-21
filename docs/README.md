@@ -1,3 +1,5 @@
+react-router-infer / [Exports](modules.md)
+
 # react-router-infer
 
 A little type-safer [react-router-dom](https://github.com/remix-run/react-router). Inspired by [@tanstack/router](https://github.com/TanStack/router).
@@ -92,4 +94,4 @@ setSearch({
 
 ## API & Example
 
-See [the docs](https://github.com/haivuw/react-router-infer/blob/main/docs/modules.md) or [the example app](https://github.com/haivuw/react-router-infer/blob/main/example/src/App.tsx)
+See [the docs](/docs/modules.md) or [the example app](example/src/App.tsx)
