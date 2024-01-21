@@ -17,15 +17,26 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - run: bun install
 
+      - name: Type Check
+        run: bun run type
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Prettier Check
+        run: bun run prettier.check
+
+      - name: Build
+        run: bun run build
+
       - name: Test
-        run: |
-          bun run type
-          bun run lint
-          bun run prettier.check
-          bun run build
-          bun run test
-          bun run test:register
-          bun run size
+        run: bun run test
+
+      - name: Test Register
+        run: bun run test:register
+
+      - name: Size Check
+        run: bun run size
 
       - name: Build example
         run: cd example && bun install && bun run build
