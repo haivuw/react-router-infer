@@ -52,7 +52,7 @@
   },
   "peerDependencies": {
     "react": ">=16.14.0",
-    "react-router-dom": ">=6.0.0"
+    "react-router-dom": ">=6.21.3"
   },
   "scripts": {
     "type": "tsc --noEmit",
