@@ -3,6 +3,7 @@
   "extends": ["config:recommended"],
   "automerge": true,
   "autoApprove": true,
+  "rangeStrategy": "bump",
   "ignoreDeps": ["react", "react-router-dom"],
   "packageRules": [
     {
