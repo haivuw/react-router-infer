@@ -1,0 +1,72 @@
+{
+  "name": "react-router-infer",
+  "description": "Type-safe wrappers for react-router-dom",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "haivuw",
+  "type": "module",
+  "homepage": "https://github.com/haivuw/react-router-infer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haivuw/react-router-infer"
+  },
+  "keywords": [
+    "react",
+    "router",
+    "react-router",
+    "typescript",
+    "type-safe"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "devDependencies": {
+    "@happy-dom/global-registrator": "^13.2.0",
+    "@size-limit/preset-small-lib": "^11.0.1",
+    "@testing-library/react": "^14.1.2",
+    "@types/react": "^18.2.47",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "bun-types": "latest",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.1.1",
+    "size-limit": "^11.0.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-router-dom": ">=6.0.0"
+  },
+  "scripts": {
+    "type": "tsc --noEmit",
+    "lint": "eslint .",
+    "prettier.check": "prettier --list-different .",
+    "build": "tsup",
+    "test": "bun test",
+    "test:register": "cd test/register && tsc --noEmit",
+    "size": "size-limit"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "2 KB"
+    }
+  ]
+}
