@@ -3,5 +3,11 @@
   "extends": ["config:recommended"],
   "automerge": true,
   "autoApprove": true,
-  "rangeStrategy": "bump"
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "groupName": "size-limit",
+      "matchPackageNames": ["size-limit", "@size-limit/preset-small-lib"]
+    }
+  ]
 }
