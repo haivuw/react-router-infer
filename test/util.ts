@@ -9,11 +9,8 @@ export const expectTypeOf = <Actual>(_: Actual) => ({
 
 export type Negate<T extends boolean> = T extends true ? false : true
 
-export type IsKeyRequired<T, K extends keyof T> = PickRequired<T> extends (
-  Pick<T, K>
-) ?
-  true
-: false
+export type IsKeyRequired<T, K extends keyof T> =
+  PickRequired<T> extends Pick<T, K> ? true : false
 
 // {a: 1, b?: 1} -> {a: 1}
 export type PickRequired<T> = {

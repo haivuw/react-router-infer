@@ -19,11 +19,8 @@ export type LoaderArg<ParamKeys extends PropertyKey> = Omit<
   params: ParamsFromKeys<ParamKeys>
 }
 
-export type Split<S extends string, D extends string> = S extends (
-  `${infer Head}${D}${infer Rest}`
-) ?
-  [Head, ...Split<Rest, D>]
-: [S]
+export type Split<S extends string, D extends string> =
+  S extends `${infer Head}${D}${infer Rest}` ? [Head, ...Split<Rest, D>] : [S]
 
 // https://github.com/Microsoft/TypeScript/issues/13298#issuecomment-885980381
 export type UnionToIntersection<U> =
@@ -38,11 +35,10 @@ type UnionToTuple<T> =
     [...UnionToTuple<Exclude<T, W>>, W]
   : []
 
-type ArrayToString<T, D extends string> = T extends (
-  [infer First, ...infer Rest]
-) ?
-  `${First & string}${Rest extends [] ? '' : D}${ArrayToString<Rest, D>}`
-: ''
+type ArrayToString<T, D extends string> =
+  T extends [infer First, ...infer Rest] ?
+    `${First & string}${Rest extends [] ? '' : D}${ArrayToString<Rest, D>}`
+  : ''
 
 // 'a' | 'b' -> 'a, b'
 export type UnionToString<T> = ArrayToString<UnionToTuple<T>, ', '>
@@ -64,15 +60,15 @@ export type Equal<A, B> =
 export type MergeObject<
   A extends Record<string, unknown>,
   B extends Record<string, unknown>,
-> = [A] extends [never] ? B
-: [B] extends [never] ? A
-: A & B
+> =
+  [A] extends [never] ? B
+  : [B] extends [never] ? A
+  : A & B
 
-export type Merge<T extends unknown[], Acc = EmptyOutput> = T extends (
-  [infer Head, ...infer Tail]
-) ?
-  Merge<Tail, Omit<Acc, keyof Head> & Head>
-: Acc
+export type Merge<T extends unknown[], Acc = EmptyOutput> =
+  T extends [infer Head, ...infer Tail] ?
+    Merge<Tail, Omit<Acc, keyof Head> & Head>
+  : Acc
 
 export type IsUnion<T> = [T] extends [UnionToIntersection<T>] ? false : true
 

@@ -56,14 +56,15 @@ type MapChildren<
   ParentPath extends string = '',
   ParentParams extends ParsedParams = EmptyParams,
   ParentSearch extends ParsedSearch = EmptyParams,
-> = T extends (
-  [infer First extends RouteObject, ...infer Rest extends RouteObject[]]
-) ?
-  [
-    ...Flatten<First, ParentPath, ParentParams, ParentSearch>,
-    ...MapChildren<Rest, ParentPath, ParentParams, ParentSearch>,
-  ]
-: []
+> =
+  T extends (
+    [infer First extends RouteObject, ...infer Rest extends RouteObject[]]
+  ) ?
+    [
+      ...Flatten<First, ParentPath, ParentParams, ParentSearch>,
+      ...MapChildren<Rest, ParentPath, ParentParams, ParentSearch>,
+    ]
+  : []
 
 type Flatten<
   T extends RouteObject,
