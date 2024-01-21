@@ -3,7 +3,6 @@
   "extends": ["config:recommended"],
   "automerge": true,
   "autoApprove": true,
-  "rangeStrategy": "bump",
   "packageRules": [
     {
       "groupName": "size-limit",
