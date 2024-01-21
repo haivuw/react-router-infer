@@ -77,12 +77,13 @@ navigate({
 })
 
 // useSearch
-const { search, setSearch, invalidRoute } = useSearch({
+const { search, setSearch, isInvalidRoute } = useSearch({
   from: '/:id',
 })
 // search/setSearch can be undefined
-if (invalidRoute) throw new Error('useSearch is being called out of /:id route')
-// search/setSearch is defined after checking invalidRoute
+if (isInvalidRoute)
+  throw new Error('useSearch is being called out of "/:id" route')
+// search/setSearch is defined after checking isInvalidRoute
 setSearch({
   page: search.page + 1,
 })

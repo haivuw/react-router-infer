@@ -59,13 +59,13 @@ type expected_search_0 = {
 const scopedSearch = useSearch({
   from: '/has-search',
 })
-if (scopedSearch.invalidRoute) throw 0
+if (scopedSearch.isInvalidRoute) throw 0
 type expected_search_1 = Pick<expected_search_0, 'view' | 'bool'>
 
 const emptySearch = useSearch({
   from: '/static',
 })
-if (emptySearch.invalidRoute) throw 0
+if (emptySearch.isInvalidRoute) throw 0
 
 type useSearch_tests = [
   Assert<Equal<typeof scopedSearch.search, expected_search_1>>,

@@ -84,7 +84,7 @@ describe('useSearch', () => {
 
     expect(_useSearch).toHaveBeenCalledTimes(1)
     expect(result.current).toEqual({
-      invalidRoute: true,
+      isInvalidRoute: true,
       search: undefined,
       setSearch: undefined,
     })

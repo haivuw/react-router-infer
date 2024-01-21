@@ -27,9 +27,9 @@ const Pokemon = (props: { pokemon: NamedAPIResource }) => {
 }
 
 const PokemonPage = () => {
-  const { search, invalidRoute } = useSearch({ from: '/pokemon' })
+  const { search, isInvalidRoute } = useSearch({ from: '/pokemon' })
 
-  if (invalidRoute) throw 'useSearch'
+  if (isInvalidRoute) throw 'useSearch'
   const { data } = useSWR(
     ['list-pokemons', search.page, search.perPage],
     async ([, page, perPage]) => {

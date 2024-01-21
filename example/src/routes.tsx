@@ -4,8 +4,8 @@ import { Outlet } from 'react-router-dom'
 import { pokemonRoute } from './pokemon'
 
 function RootIndexPage() {
-  const { search, invalidRoute } = useSearch({ from: '/' })
-  if (invalidRoute) return
+  const { search, isInvalidRoute } = useSearch({ from: '/' })
+  if (isInvalidRoute) return
 
   return (
     <div className='bg-slate-50 p-4 rounded'>
@@ -33,10 +33,10 @@ function RootLayout() {
 function BookIndexPage() {
   const params = useParams()
   const nav = useNavigate()
-  const { search, setSearch, invalidRoute } = useSearch({
+  const { search, setSearch, isInvalidRoute } = useSearch({
     from: '/book',
   })
-  if (invalidRoute) return
+  if (isInvalidRoute) return
 
   return (
     <div className='bg-slate-50 p-4 rounded'>
@@ -106,10 +106,10 @@ function BookIndexPage() {
 
 const BookIdPage = () => {
   const params = useParams()
-  const { search, invalidRoute } = useSearch({
+  const { search, isInvalidRoute } = useSearch({
     from: '/book/:bookId',
   })
-  if (invalidRoute) return
+  if (isInvalidRoute) return
   return (
     <div className='bg-slate-100 p-4 rounded'>
       <h2>/book/:bookId</h2>
