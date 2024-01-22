@@ -63,11 +63,6 @@ export type MergeObject<
   : [B] extends [never] ? A
   : A & B
 
-export type Merge<T extends unknown[], Acc = EmptyOutput> =
-  T extends [infer Head, ...infer Tail] ?
-    Merge<Tail, Omit<Acc, keyof Head> & Head>
-  : Acc
-
 export type IsUnion<T> = [T] extends [UnionToIntersection<T>] ? false : true
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

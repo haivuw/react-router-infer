@@ -45,6 +45,7 @@ export const splatRoutes = r([
 export const searchParamsRoutes = r([
   {
     path: 'has-search',
+    element: null,
     parseSearch: (raw) => {
       return z
         .object({

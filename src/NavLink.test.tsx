@@ -4,8 +4,8 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { createWrapper } from '../test/react-wrapper'
 import * as RR from 'react-router-dom'
 import { Equal } from './util'
-import { Link, TLink } from './Link'
-import { IsKeyRequired, Assert, PickRequired } from '../test/util'
+import { NavLink, TNavLink } from './NavLink'
+import { IsKeyRequired, Assert } from '../test/util'
 import { ComponentProps } from 'react'
 import { defaultStringifySearch } from './parser'
 
@@ -44,11 +44,11 @@ const mockRoutes = r([
 
 type Routes = CreateRoutes<typeof mockRoutes>
 
-const BaseLink = Link as TLink<Routes>
+const BaseLink = NavLink as TNavLink<Routes>
 const Link0: typeof BaseLink<'/book/:bookId/:anotherId'> = BaseLink
 type Prop0 = ComponentProps<typeof Link0>
 
-describe('Link', () => {
+describe('NavLink', () => {
   afterEach(() => {
     location = undefined
   })

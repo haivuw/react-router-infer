@@ -3,6 +3,7 @@
   "plugin": ["typedoc-plugin-markdown", "./typedoc-plugin-display-type.js"],
   "out": "docs",
   "includeVersion": true,
+  "excludeInternal": true,
   "excludeNotDocumented": true,
   "entryPoints": ["src/index.ts"]
 }

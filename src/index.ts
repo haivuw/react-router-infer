@@ -17,12 +17,15 @@ export {
   type NavigateTo,
   type NavigateFunction,
 } from './useNavigate'
-export { Link, type LinkProps, type TLink } from './Link'
+export { Link } from './Link'
+export { NavLink } from './NavLink'
+export { generatePath, create_generatePath } from './generatePath'
 
 export {
   SearchParamsProvider,
   withSearchParamsProvider,
   type SearchParamsProviderProps,
+  type ParserUtils,
 } from './SearchContext'
 
 /** @see https://tanstack.com/router/v1/docs/guide/custom-search-param-serialization */

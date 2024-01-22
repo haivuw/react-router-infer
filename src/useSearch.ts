@@ -77,8 +77,7 @@ type UseSearchOutput<
   },
 > = Throw extends true ? ValidOutput : ValidOutput | InvalidOutput
 
-type UseSearch = <
-  Routes extends BaseRoutes = RegisteredRoutes,
+export type UseSearch<Routes extends BaseRoutes = RegisteredRoutes> = <
   From extends string & keyof Routes = string & keyof Routes,
   Throw extends boolean = true,
 >(

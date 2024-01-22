@@ -1,6 +1,6 @@
-[react-router-infer - v0.1.0](README.md) / Exports
+[react-router-infer - v0.2.0](README.md) / Exports
 
-# react-router-infer - v0.1.0
+# react-router-infer - v0.2.0
 
 ## Table of contents
 
@@ -12,6 +12,9 @@
 ### Functions
 
 - [Link](modules.md#link)
+- [NavLink](modules.md#navlink)
+- [create\_generatePath](modules.md#create_generatepath)
+- [generatePath](modules.md#generatepath)
 - [r](modules.md#r)
 - [useNavigate](modules.md#usenavigate)
 - [useParams](modules.md#useparams)
@@ -44,7 +47,7 @@ const routes = [...] as const satisfies RouteObject[]
 
 #### Defined in
 
-[core.ts:14](https://github.com/haivuw/react-router-infer/blob/449bf32/src/core.ts#L14)
+[core.ts:14](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/core.ts#L14)
 
 ___
 
@@ -56,7 +59,7 @@ Extends `react-router-dom`'s `RouteObject` with `parseSearch` fields
 
 #### Defined in
 
-[core.ts:35](https://github.com/haivuw/react-router-infer/blob/449bf32/src/core.ts#L35)
+[core.ts:35](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/core.ts#L35)
 
 ## Functions
 
@@ -97,7 +100,119 @@ const render = (
 
 #### Defined in
 
-[Link.tsx:24](https://github.com/haivuw/react-router-infer/blob/449bf32/src/Link.tsx#L24)
+[Link.tsx:24](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/Link.tsx#L24)
+
+___
+
+### NavLink
+
+▸ **NavLink**\<`To`\>(`props`): `Element`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `To` | extends `string` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | `Object` | T |
+
+#### Returns
+
+`Element`
+
+**`Example`**
+
+```ts
+const render = (
+    <NavLink
+      to='/:id'
+      params={{ id: 1 }}
+      search={{ page: 1 }}
+      // react-router's NavigateOptions
+      replace
+      {...rest}
+    />
+  )
+```
+
+#### Defined in
+
+[NavLink.tsx:22](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/NavLink.tsx#L22)
+
+___
+
+### create\_generatePath
+
+▸ **create_generatePath**(`opts?`): `GeneratePath`
+
+Return a new `generatePath` function that uses the custom `stringifySearch`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `opts?` | `Pick`\<`ParserUtils`, ``"stringifySearch"``\> |
+
+#### Returns
+
+`GeneratePath`
+
+**`Example`**
+
+```ts
+const generatePath = create_generatePath({
+    stringifySearch: () => '?custom',
+  })
+```
+
+#### Defined in
+
+[generatePath.ts:26](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/generatePath.ts#L26)
+
+___
+
+### generatePath
+
+▸ **generatePath**\<`Routes`, `To`\>(`to`): `string`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `Routes` | extends `BaseRoutes` = `BaseRoutes` |
+| `To` | extends `string` \| `number` \| `symbol` = keyof `Routes` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `to` | `NavigateTo`\<`Routes`, `To`\> |
+
+#### Returns
+
+`string`
+
+**`Example`**
+
+```ts
+import { redirect } from 'react-router-dom'
+  import { generatePath } from 'react-router-infer'
+
+  const path = generatePath({
+    to: '/:id',
+    params: { id: '1' },
+    search: { page: 1 },
+  })
+  redirect(path)
+```
+
+#### Defined in
+
+[generatePath.ts:54](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/generatePath.ts#L54)
 
 ___
 
@@ -137,23 +252,17 @@ const singleRoute = r({ path: '/' })
 
 #### Defined in
 
-[core.ts:142](https://github.com/haivuw/react-router-infer/blob/449bf32/src/core.ts#L142)
+[core.ts:142](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/core.ts#L142)
 
 ___
 
 ### useNavigate
 
-▸ **useNavigate**\<`Routes`\>(): `NavigateFunction`\<`Routes`\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `Routes` | extends `BaseRoutes` = `BaseRoutes` |
+▸ **useNavigate**(): `NavigateFunction`\<`BaseRoutes`\>
 
 #### Returns
 
-`NavigateFunction`\<`Routes`\>
+`NavigateFunction`\<`BaseRoutes`\>
 
 **`Example`**
 
@@ -172,20 +281,19 @@ const navigate = useNavigate()
 
 #### Defined in
 
-[useNavigate.ts:20](https://github.com/haivuw/react-router-infer/blob/449bf32/src/useNavigate.ts#L20)
+[useNavigate.ts:20](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/useNavigate.ts#L20)
 
 ___
 
 ### useParams
 
-▸ **useParams**\<`Routes`, `From`\>(`_opts?`): `IsUnion`\<`From`\> extends ``true`` ? `Partial`\<`GetAllParams`\<`Routes`, ``"params"``\>\> : `Partial`\<`ToObject`\<`Routes`[`From`][``"params"``]\>\>
+▸ **useParams**\<`From`\>(`_opts?`): `IsUnion`\<`From`\> extends ``true`` ? `Partial`\<`ParsedParams`\> : `Partial`\<`ParsedParams`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `Routes` | extends `BaseRoutes` = `BaseRoutes` |
-| `From` | extends `string` = `string` & keyof `Routes` |
+| `From` | extends `string` = `string` |
 
 #### Parameters
 
@@ -195,7 +303,7 @@ ___
 
 #### Returns
 
-`IsUnion`\<`From`\> extends ``true`` ? `Partial`\<`GetAllParams`\<`Routes`, ``"params"``\>\> : `Partial`\<`ToObject`\<`Routes`[`From`][``"params"``]\>\>
+`IsUnion`\<`From`\> extends ``true`` ? `Partial`\<`ParsedParams`\> : `Partial`\<`ParsedParams`\>
 
 **`Example`**
 
@@ -209,20 +317,19 @@ const { id } = useParams({
 
 #### Defined in
 
-[useParams.ts:14](https://github.com/haivuw/react-router-infer/blob/449bf32/src/useParams.ts#L14)
+[useParams.ts:14](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/useParams.ts#L14)
 
 ___
 
 ### useSearch
 
-▸ **useSearch**\<`Routes`, `From`, `Throw`\>(`opts`): `UseSearchOutput`\<`Routes`, `From`, `Throw`, `ToObject`\<`Routes`[`From`][``"search"``]\>, \{ `isInvalidRoute`: ``false`` ; `search`: `ToObject`\<`Routes`[`From`][``"search"``]\> ; `setSearch`: (`search`: `ToObject`\<`Routes`[`From`][``"search"``]\>, `opts?`: `NavigateOptions`) => `void`  }, \{ `isInvalidRoute`: ``true`` ; `search`: `undefined` ; `setSearch`: `undefined`  }\>
+▸ **useSearch**\<`From`, `Throw`\>(`opts`): `UseSearchOutput`\<`BaseRoutes`, `From`, `Throw`, `ParsedSearch`, \{ `isInvalidRoute`: ``false`` ; `search`: `ParsedSearch` ; `setSearch`: (`search`: `ParsedSearch`, `opts?`: `NavigateOptions`) => `void`  }, \{ `isInvalidRoute`: ``true`` ; `search`: `undefined` ; `setSearch`: `undefined`  }\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `Routes` | extends `BaseRoutes` = `BaseRoutes` |
-| `From` | extends `string` = `string` & keyof `Routes` |
+| `From` | extends `string` = `string` |
 | `Throw` | extends `boolean` = ``true`` |
 
 #### Parameters
@@ -233,7 +340,7 @@ ___
 
 #### Returns
 
-`UseSearchOutput`\<`Routes`, `From`, `Throw`, `ToObject`\<`Routes`[`From`][``"search"``]\>, \{ `isInvalidRoute`: ``false`` ; `search`: `ToObject`\<`Routes`[`From`][``"search"``]\> ; `setSearch`: (`search`: `ToObject`\<`Routes`[`From`][``"search"``]\>, `opts?`: `NavigateOptions`) => `void`  }, \{ `isInvalidRoute`: ``true`` ; `search`: `undefined` ; `setSearch`: `undefined`  }\>
+`UseSearchOutput`\<`BaseRoutes`, `From`, `Throw`, `ParsedSearch`, \{ `isInvalidRoute`: ``false`` ; `search`: `ParsedSearch` ; `setSearch`: (`search`: `ParsedSearch`, `opts?`: `NavigateOptions`) => `void`  }, \{ `isInvalidRoute`: ``true`` ; `search`: `undefined` ; `setSearch`: `undefined`  }\>
 
 **`Example`**
 
@@ -262,7 +369,7 @@ const { search, setSearch, isInvalidRoute } = useSearch({
 
 #### Defined in
 
-[useSearch.ts:31](https://github.com/haivuw/react-router-infer/blob/449bf32/src/useSearch.ts#L31)
+[useSearch.ts:31](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/useSearch.ts#L31)
 
 ___
 
@@ -301,4 +408,4 @@ Wraps user defined routes with SearchParamsProvider
 
 #### Defined in
 
-[SearchContext.tsx:98](https://github.com/haivuw/react-router-infer/blob/449bf32/src/SearchContext.tsx#L98)
+[SearchContext.tsx:94](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/SearchContext.tsx#L94)

@@ -1,15 +1,13 @@
-import * as RR from 'react-router-dom'
-import { NavigateTo } from './useNavigate'
-import { RegisteredRoutes } from '.'
-import { BaseRoutes, ParsedParams } from './core'
-import React from 'react'
 import { useParserContext } from './SearchContext'
+import * as RR from 'react-router-dom'
+import { BaseRoutes, ParsedParams } from './core'
+import { NavigateTo, RegisteredRoutes } from '.'
 import { Any } from './util'
 
 /**
  * @example
  *   const render = (
- *     <Link
+ *     <NavLink
  *       to='/:id'
  *       params={{ id: 1 }}
  *       search={{ page: 1 }}
@@ -21,12 +19,12 @@ import { Any } from './util'
  *
  * @param props T {@removeType}
  */
-export const Link: TLink = (props) => {
+export const NavLink: TNavLink = (props) => {
   const { to, params, search, hash, anchorRef, ...rest } = props
   const { createPath } = useParserContext()
 
   return (
-    <RR.Link
+    <RR.NavLink
       {...rest}
       ref={anchorRef}
       to={createPath({
@@ -39,16 +37,16 @@ export const Link: TLink = (props) => {
   )
 }
 
-export type LinkProps<
+export type NavLinkProps<
   Routes extends BaseRoutes,
   To extends keyof Routes,
-> = Omit<RR.LinkProps, keyof NavigateTo<Any, Any>> &
+> = Omit<RR.NavLinkProps, keyof NavigateTo<Any, Any>> &
   NavigateTo<Routes, To> & {
     anchorRef?: React.Ref<HTMLAnchorElement>
   }
 
-export type TLink<Routes extends BaseRoutes = RegisteredRoutes> = <
+export type TNavLink<Routes extends BaseRoutes = RegisteredRoutes> = <
   To extends keyof Routes,
 >(
-  props: LinkProps<Routes, To>,
+  props: NavLinkProps<Routes, To>,
 ) => JSX.Element

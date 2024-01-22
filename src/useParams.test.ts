@@ -1,4 +1,4 @@
-import { useParams } from './useParams'
+import { UseParams, useParams } from './useParams'
 import { dynamicRoutes, optionalParamsRoutes, splatRoutes } from '../test/mock'
 import { CreateRoutes } from '.'
 import { describe, test } from 'bun:test'
@@ -8,7 +8,7 @@ import { Equal } from './util'
 describe('useParams', () => {
   test('nested', async () => {
     type Routes = CreateRoutes<typeof dynamicRoutes>
-    type params = ReturnType<typeof useParams<Routes>>
+    type params = ReturnType<UseParams<Routes>>
     type tests = [
       Assert<
         Equal<
@@ -24,7 +24,7 @@ describe('useParams', () => {
 
   test('optional params', async () => {
     type Routes = CreateRoutes<typeof optionalParamsRoutes>
-    type params = ReturnType<typeof useParams<Routes>>
+    type params = ReturnType<UseParams<Routes>>
     type tests = [
       Assert<
         Equal<
@@ -40,7 +40,7 @@ describe('useParams', () => {
 
   test('splat params', async () => {
     type Routes = CreateRoutes<typeof splatRoutes>
-    type params = ReturnType<typeof useParams<Routes>>
+    type params = ReturnType<UseParams<Routes>>
     type tests = [
       Assert<
         Equal<

@@ -11,11 +11,11 @@ import { IsUnion, ToObject } from './util'
  *   })
  *   // all returned params are optional
  */
-export function useParams<
-  Routes extends BaseRoutes = RegisteredRoutes,
+export const useParams: UseParams = RR.useParams
+
+export type UseParams<Routes extends BaseRoutes = RegisteredRoutes> = <
   From extends string & keyof Routes = string & keyof Routes,
->(_opts?: ScopeOptions<From>) {
-  return RR.useParams() as IsUnion<From> extends true ?
-    Partial<GetAllParams<Routes, 'params'>>
-  : Partial<ToObject<Routes[From]['params']>>
-}
+>(
+  _opts?: ScopeOptions<From>,
+) => IsUnion<From> extends true ? Partial<GetAllParams<Routes, 'params'>>
+: Partial<ToObject<Routes[From]['params']>>

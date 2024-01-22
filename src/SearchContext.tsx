@@ -68,14 +68,10 @@ export const SearchParamsProvider = ({
   )
 }
 
-export type SearchParamsProviderProps = {
+export type SearchParamsProviderProps = ParserUtils & {
   children: React.ReactNode
   /** User defined routes */
   routes: RouteObject[]
-  /** Override the default search stringifier */
-  stringifySearch?: (s: ParsedSearch) => string
-  /** Override the default search parser */
-  parseSearch?: (s: string) => ParsedSearch
 }
 
 /**
@@ -111,14 +107,18 @@ export const withSearchParamsProvider = (
   ]
 }
 
+export type ParserUtils = {
+  /** Override the default search stringifier */
+  stringifySearch?: (s: ParsedSearch) => string
+  /** Override the default search parser */
+  parseSearch?: (s: string) => ParsedSearch
+}
+
 /**
  * Stable context for parser/stringifier. Consumers shouldn't re-render because
  * of this context.
  */
-type ParserContext = Pick<
-  SearchParamsProviderProps,
-  'parseSearch' | 'stringifySearch'
-> & {
+type ParserContext = ParserUtils & {
   createPath: (opts: NavigateTo<Any, Any>) => Partial<RR.Path>
 }
 

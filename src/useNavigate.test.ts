@@ -8,16 +8,14 @@ import { type CreateRoutes } from '.'
 import { describe, expect, test } from 'bun:test'
 import { act, renderHook } from '@testing-library/react'
 import { createWrapper } from '../test/react-wrapper'
-import { useNavigate } from './useNavigate'
+import { UseNavigate, useNavigate } from './useNavigate'
 import * as RR from 'react-router-dom'
-import { Assert, PropertyIsOptional } from '../test/util'
-import { Equal } from './util'
 import { useParserContext } from './SearchContext'
 
 describe('useNavigate', () => {
   test('dynamic path', async () => {
     const routes = dynamicRoutes
-    const _useNavigate = useNavigate<CreateRoutes<typeof routes>>
+    const _useNavigate = useNavigate as UseNavigate<CreateRoutes<typeof routes>>
     const { result } = renderHook(
       () => ({
         navigate: _useNavigate(),
@@ -45,7 +43,7 @@ describe('useNavigate', () => {
 
   test('navigate with search', async () => {
     const routes = searchParamsRoutes
-    const _useNavigate = useNavigate<CreateRoutes<typeof routes>>
+    const _useNavigate = useNavigate as UseNavigate<CreateRoutes<typeof routes>>
     const { result } = renderHook(
       () => ({
         navigate: _useNavigate(),
@@ -88,7 +86,7 @@ describe('useNavigate', () => {
   test('optional params', async () => {
     const routes = optionalParamsRoutes
     type Routes = CreateRoutes<typeof routes>
-    const _useNavigate = useNavigate<Routes>
+    const _useNavigate = useNavigate as UseNavigate<Routes>
 
     const { result } = renderHook(
       () => ({
@@ -145,7 +143,7 @@ describe('useNavigate', () => {
   test('splat params', async () => {
     const routes = splatRoutes
     type Routes = CreateRoutes<typeof routes>
-    const _useNavigate = useNavigate<Routes>
+    const _useNavigate = useNavigate as UseNavigate<Routes>
 
     const { result } = renderHook(
       () => ({

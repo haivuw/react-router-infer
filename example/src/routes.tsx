@@ -1,4 +1,11 @@
-import { useParams, useNavigate, useSearch, r, Link } from 'react-router-infer'
+import {
+  useParams,
+  useNavigate,
+  useSearch,
+  r,
+  Link,
+  NavLink,
+} from 'react-router-infer'
 import * as v from 'valibot'
 import { Outlet } from 'react-router-dom'
 import { pokemonRoute } from './pokemon'
@@ -20,9 +27,9 @@ function RootLayout() {
     <>
       <div className='container mx-auto px-4 py-4'>
         <nav className='flex gap-3'>
-          <Link to='/'>Home</Link>
-          <Link to='/book'>Books</Link>
-          <Link to='/pokemon'>Pokemon</Link>
+          <NavLink to='/'>Home</NavLink>
+          <NavLink to='/book'>Books</NavLink>
+          <NavLink to='/pokemon'>Pokemon</NavLink>
         </nav>
         <Outlet />
       </div>

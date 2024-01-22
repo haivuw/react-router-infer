@@ -7,13 +7,17 @@ import React from 'react'
 import {
   type CreateRoutes,
   Link,
+  NavLink,
   useNavigate,
   useParams,
   useSearch,
+  generatePath,
+  create_generatePath,
 } from '../../dist'
 import { Equal } from '../../src/util'
 import { mixedRoutes } from '../mock'
 import { Assert } from '../util'
+import * as RR from 'react-router-dom'
 
 type Routes = CreateRoutes<typeof mixedRoutes>
 
@@ -124,4 +128,41 @@ const Link_tests = [
       },
     }}
   />,
+  <NavLink
+    to='/:lang?/docs'
+    params={{
+      lang: 'en',
+    }}
+    className={({ isActive, isPending }) =>
+      isPending ? 'pending'
+      : isActive ? 'active'
+      : ''
+    }
+    style={({ isActive }) => ({ color: isActive ? 'red' : 'blue' })}
+  />,
 ]
+
+generatePath({
+  to: '/:dynamic1/:dynamic2',
+  params: {
+    dynamic1: '1',
+    dynamic2: '2',
+  },
+})
+
+generatePath({
+  to: '/has-search',
+  search: {
+    bool: true,
+    view: 'grid',
+  },
+})
+
+create_generatePath({
+  stringifySearch: (raw) => '?asd',
+})({
+  to: '/:lang?/docs/:version?',
+  params: {
+    lang: 'en',
+  },
+})

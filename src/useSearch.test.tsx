@@ -3,7 +3,7 @@ import { describe, expect, mock, test } from 'bun:test'
 import { renderHook } from '@testing-library/react'
 import { z } from 'zod'
 import { createWrapper } from '../test/react-wrapper'
-import { useSearch } from './useSearch'
+import { UseSearch, useSearch } from './useSearch'
 import { defaultStringifySearch } from '.'
 
 const schema0 = z.object({
@@ -47,7 +47,7 @@ type Routes = CreateRoutes<typeof routes>
 
 describe('useSearch', () => {
   test('works', () => {
-    const _useSearch = mock(useSearch<Routes>)
+    const _useSearch = mock(useSearch) as UseSearch<Routes>
     const { result } = renderHook(() => _useSearch({ from: '/dashboard' }), {
       wrapper: createWrapper({
         routes,
@@ -67,7 +67,7 @@ describe('useSearch', () => {
   })
 
   test('returns undefined if From route is not rendered', () => {
-    const _useSearch = mock(useSearch<Routes, '/store', false>)
+    const _useSearch = mock(useSearch) as UseSearch<Routes>
     const { result } = renderHook(
       () => _useSearch({ from: '/store', throwOnInvalidRoute: false }),
       {
