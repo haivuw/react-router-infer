@@ -1,5 +1,5 @@
 import * as RR from 'react-router-dom'
-import { NavigateOptions } from './useNavigate'
+import { NavigateTo } from './useNavigate'
 import { RegisteredRoutes } from '.'
 import { Merge } from './util'
 import { BaseRoutes, ParsedParams } from './core'
@@ -13,13 +13,13 @@ import { useParserContext } from './SearchContext'
  *       to='/:id'
  *       params={{ id: 1 }}
  *       search={{ page: 1 }}
- *       // RR.NavigateOptions
+ *       // react-router's NavigateOptions
  *       replace
  *       {...rest}
  *     />
  *   )
  *
- * @param props T {@removeType }
+ * @param props T {@removeType}
  */
 export const Link: TLink = (props) => {
   const { to, params, search, hash, anchorRef, ...rest } = props
@@ -45,7 +45,7 @@ export type LinkProps<
 > = Merge<
   [
     RR.LinkProps,
-    NavigateOptions<Routes, To>,
+    NavigateTo<Routes, To>,
     {
       anchorRef?: React.Ref<HTMLAnchorElement>
     },

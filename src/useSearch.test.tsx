@@ -67,20 +67,23 @@ describe('useSearch', () => {
   })
 
   test('returns undefined if From route is not rendered', () => {
-    const _useSearch = mock(useSearch<Routes>)
-    const { result } = renderHook(() => _useSearch({ from: '/store' }), {
-      wrapper: createWrapper({
-        routes,
-        memoryRouterOpts: {
-          initialEntries: [
-            {
-              pathname: '/dashboard',
-              search: defaultStringifySearch(search0),
-            },
-          ],
-        },
-      }),
-    })
+    const _useSearch = mock(useSearch<Routes, '/store', false>)
+    const { result } = renderHook(
+      () => _useSearch({ from: '/store', throwOnInvalidRoute: false }),
+      {
+        wrapper: createWrapper({
+          routes,
+          memoryRouterOpts: {
+            initialEntries: [
+              {
+                pathname: '/dashboard',
+                search: defaultStringifySearch(search0),
+              },
+            ],
+          },
+        }),
+      },
+    )
 
     expect(_useSearch).toHaveBeenCalledTimes(1)
     expect(result.current).toEqual({

@@ -65,7 +65,7 @@
     "test": "bun test",
     "test:register": "cd test/register && tsc --noEmit",
     "size": "size-limit",
-    "docs": "typedoc --plugin ./typedoc-plugin-display-type.js --plugin typedoc-plugin-markdown --out docs --includeVersion --excludeNotDocumented src/index.ts"
+    "docs": "typedoc --options typedoc.json"
   },
   "size-limit": [
     {

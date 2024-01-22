@@ -44,7 +44,7 @@ const routes = [...] as const satisfies RouteObject[]
 
 #### Defined in
 
-[core.ts:14](https://github.com/haivuw/react-router-infer/blob/acd70ca/src/core.ts#L14)
+[core.ts:14](https://github.com/haivuw/react-router-infer/blob/179c344/src/core.ts#L14)
 
 ___
 
@@ -56,7 +56,7 @@ Extends `react-router-dom`'s `RouteObject` with `parseSearch` fields
 
 #### Defined in
 
-[core.ts:35](https://github.com/haivuw/react-router-infer/blob/acd70ca/src/core.ts#L35)
+[core.ts:35](https://github.com/haivuw/react-router-infer/blob/179c344/src/core.ts#L35)
 
 ## Functions
 
@@ -88,7 +88,7 @@ const render = (
       to='/:id'
       params={{ id: 1 }}
       search={{ page: 1 }}
-      // RR.NavigateOptions
+      // react-router's NavigateOptions
       replace
       {...rest}
     />
@@ -97,7 +97,7 @@ const render = (
 
 #### Defined in
 
-[Link.tsx:24](https://github.com/haivuw/react-router-infer/blob/acd70ca/src/Link.tsx#L24)
+[Link.tsx:24](https://github.com/haivuw/react-router-infer/blob/179c344/src/Link.tsx#L24)
 
 ___
 
@@ -137,7 +137,7 @@ const singleRoute = r({ path: '/' })
 
 #### Defined in
 
-[core.ts:142](https://github.com/haivuw/react-router-infer/blob/acd70ca/src/core.ts#L142)
+[core.ts:142](https://github.com/haivuw/react-router-infer/blob/179c344/src/core.ts#L142)
 
 ___
 
@@ -164,7 +164,7 @@ const navigate = useNavigate()
     params: { id: 1 },
     // search is always optional
     search: { page: 1 },
-    // RR.NavigateOptions
+    // react-router's NavigateOptions
     replace: true,
     ...rest,
   })
@@ -172,7 +172,7 @@ const navigate = useNavigate()
 
 #### Defined in
 
-[useNavigate.ts:20](https://github.com/haivuw/react-router-infer/blob/acd70ca/src/useNavigate.ts#L20)
+[useNavigate.ts:20](https://github.com/haivuw/react-router-infer/blob/179c344/src/useNavigate.ts#L20)
 
 ___
 
@@ -209,13 +209,13 @@ const { id } = useParams({
 
 #### Defined in
 
-[useParams.ts:14](https://github.com/haivuw/react-router-infer/blob/acd70ca/src/useParams.ts#L14)
+[useParams.ts:14](https://github.com/haivuw/react-router-infer/blob/179c344/src/useParams.ts#L14)
 
 ___
 
 ### useSearch
 
-▸ **useSearch**\<`Routes`, `From`\>(`opts`): `ToObject`\<`Routes`[`From`][``"search"``]\> extends `Search` ? \{ `isInvalidRoute`: ``false`` ; `search`: `Search` ; `setSearch`: (`search`: `Search`, `opts?`: `NavigateOptions`) => `void`  } \| \{ `isInvalidRoute`: ``true`` ; `search`: `undefined` ; `setSearch`: `undefined`  } : `never`
+▸ **useSearch**\<`Routes`, `From`, `Throw`\>(`opts`): `UseSearchOutput`\<`Routes`, `From`, `Throw`, `ToObject`\<`Routes`[`From`][``"search"``]\>, \{ `isInvalidRoute`: ``false`` ; `search`: `ToObject`\<`Routes`[`From`][``"search"``]\> ; `setSearch`: (`search`: `ToObject`\<`Routes`[`From`][``"search"``]\>, `opts?`: `NavigateOptions`) => `void`  }, \{ `isInvalidRoute`: ``true`` ; `search`: `undefined` ; `setSearch`: `undefined`  }\>
 
 #### Type parameters
 
@@ -223,17 +223,17 @@ ___
 | :------ | :------ |
 | `Routes` | extends `BaseRoutes` = `BaseRoutes` |
 | `From` | extends `string` = `string` & keyof `Routes` |
+| `Throw` | extends `boolean` = ``true`` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `opts` | `Object` |
-| `opts.from` | `From` |
+| `opts` | `UseSearchInput`\<`From`, `Throw`\> |
 
 #### Returns
 
-`ToObject`\<`Routes`[`From`][``"search"``]\> extends `Search` ? \{ `isInvalidRoute`: ``false`` ; `search`: `Search` ; `setSearch`: (`search`: `Search`, `opts?`: `NavigateOptions`) => `void`  } \| \{ `isInvalidRoute`: ``true`` ; `search`: `undefined` ; `setSearch`: `undefined`  } : `never`
+`UseSearchOutput`\<`Routes`, `From`, `Throw`, `ToObject`\<`Routes`[`From`][``"search"``]\>, \{ `isInvalidRoute`: ``false`` ; `search`: `ToObject`\<`Routes`[`From`][``"search"``]\> ; `setSearch`: (`search`: `ToObject`\<`Routes`[`From`][``"search"``]\>, `opts?`: `NavigateOptions`) => `void`  }, \{ `isInvalidRoute`: ``true`` ; `search`: `undefined` ; `setSearch`: `undefined`  }\>
 
 **`Example`**
 
@@ -241,17 +241,19 @@ ___
 const { search, setSearch, isInvalidRoute } = useSearch({
     // the absolute path this hook is called under.
     from: '/dashboard',
+    // whether to throw an error if the route is not rendered.
+    // default = true
+    throwOnInvalidRoute: false,
   })
 
-  // search/setSearch can be undefined if `/dashboard` is not rendered. You need to handle that possibility.
-  if (isInvalidRoute)
-    throw new Error('useParams is called outside of "/has-search-params"')
+  // if `throwOnInvalidRoute` is false, you have to handle the case.
+  if (isInvalidRoute) throw YOUR_ERROR
 
   // search/setSearch is safe to use after the check.
   setSearch(
     // new search state
     { page: search.page + 1 },
-    // RR's NavigateOptions
+    // react-router's NavigateOptions
     {
       replace: true,
     },
@@ -260,7 +262,7 @@ const { search, setSearch, isInvalidRoute } = useSearch({
 
 #### Defined in
 
-[useSearch.ts:29](https://github.com/haivuw/react-router-infer/blob/acd70ca/src/useSearch.ts#L29)
+[useSearch.ts:31](https://github.com/haivuw/react-router-infer/blob/179c344/src/useSearch.ts#L31)
 
 ___
 
@@ -299,4 +301,4 @@ Wraps user defined routes with SearchParamsProvider
 
 #### Defined in
 
-[SearchContext.tsx:98](https://github.com/haivuw/react-router-infer/blob/acd70ca/src/SearchContext.tsx#L98)
+[SearchContext.tsx:98](https://github.com/haivuw/react-router-infer/blob/179c344/src/SearchContext.tsx#L98)

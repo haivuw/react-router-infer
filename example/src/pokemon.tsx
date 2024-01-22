@@ -13,9 +13,12 @@ const Pokemon = (props: { pokemon: NamedAPIResource }) => {
     pokemon: { name },
   } = props
 
-  const { data } = useSWR(['pokemon-by-name', name], async ([, name]) => {
-    return client.getPokemonByName(name)
-  })
+  const { data } = useSWR(
+    [client.getPokemonByName.name, name],
+    async ([, name]) => {
+      return client.getPokemonByName(name)
+    },
+  )
 
   return (
     <div className='flex flex-col items-center'>
@@ -27,11 +30,10 @@ const Pokemon = (props: { pokemon: NamedAPIResource }) => {
 }
 
 const PokemonPage = () => {
-  const { search, isInvalidRoute } = useSearch({ from: '/pokemon' })
+  const { search } = useSearch({ from: '/pokemon' })
 
-  if (isInvalidRoute) throw 'useSearch'
   const { data } = useSWR(
-    ['list-pokemons', search.page, search.perPage],
+    [client.listPokemons.name, search.page, search.perPage],
     async ([, page, perPage]) => {
       return client.listPokemons(
         // offset

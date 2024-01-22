@@ -12,7 +12,7 @@ import { useParserContext } from './SearchContext'
  *     params: { id: 1 },
  *     // search is always optional
  *     search: { page: 1 },
- *     // RR.NavigateOptions
+ *     // react-router's NavigateOptions
  *     replace: true,
  *     ...rest,
  *   })
@@ -37,10 +37,7 @@ export function useNavigate<
   }
 }
 
-export type NavigateOptions<
-  Routes extends BaseRoutes,
-  To extends keyof Routes,
-> = {
+export type NavigateTo<Routes extends BaseRoutes, To extends keyof Routes> = {
   to: To
   search?: Routes[To]['search']
   hash?: string
@@ -57,7 +54,7 @@ export type NavigateFunction<Routes extends BaseRoutes> = <
     [
       //
       RR.NavigateOptions,
-      NavigateOptions<Routes, To>,
+      NavigateTo<Routes, To>,
     ]
   >,
 ) => void

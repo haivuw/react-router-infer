@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import * as RR from 'react-router-dom'
 import { RouteObject, ParsedSearch } from './core'
 import { defaultParseSearch, defaultStringifySearch } from './parser'
-import { NavigateOptions } from './useNavigate'
+import { NavigateTo } from './useNavigate'
 import { Any } from './util'
 
 export const SearchParamsProvider = ({
@@ -119,7 +119,7 @@ type ParserContext = Pick<
   SearchParamsProviderProps,
   'parseSearch' | 'stringifySearch'
 > & {
-  createPath: (opts: NavigateOptions<Any, Any>) => Partial<RR.Path>
+  createPath: (opts: NavigateTo<Any, Any>) => Partial<RR.Path>
 }
 
 const ParserContext = React.createContext<ParserContext | undefined>(undefined)

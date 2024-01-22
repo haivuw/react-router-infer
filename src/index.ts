@@ -14,7 +14,7 @@ export { useParams } from './useParams'
 export { useSearch } from './useSearch'
 export {
   useNavigate,
-  type NavigateOptions,
+  type NavigateTo,
   type NavigateFunction,
 } from './useNavigate'
 export { Link, type LinkProps, type TLink } from './Link'

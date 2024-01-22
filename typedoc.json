@@ -1,0 +1,8 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "plugin": ["typedoc-plugin-markdown", "./typedoc-plugin-display-type.js"],
+  "out": "docs",
+  "includeVersion": true,
+  "excludeNotDocumented": true,
+  "entryPoints": ["src/index.ts"]
+}
