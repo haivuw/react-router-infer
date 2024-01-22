@@ -1,6 +1,6 @@
 # react-router-infer
 
-![ci](https://github.com/haivuw/rinfer/actions/workflows/ci.yml/badge.svg)
+![ci](https://github.com/haivuw/react-router-infer/actions/workflows/ci.yml/badge.svg)
 
 A little type-safer [react-router-dom](https://github.com/remix-run/react-router). Inspired by [@tanstack/router](https://github.com/TanStack/router).
 
