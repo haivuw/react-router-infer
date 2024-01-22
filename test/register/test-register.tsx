@@ -158,6 +158,10 @@ generatePath({
   },
 })
 
+create_generatePath()({
+  to: '/static',
+})
+
 create_generatePath({
   stringifySearch: (raw) => '?asd',
 })({

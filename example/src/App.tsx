@@ -3,6 +3,8 @@ import {
   type CreateRoutes,
   r,
   withSearchParamsProvider,
+  generatePath,
+  create_generatePath,
 } from 'react-router-infer'
 import {
   createBrowserRouter,
@@ -11,6 +13,13 @@ import {
   // useRoutes,
 } from 'react-router-dom'
 import { ALL_ROUTES } from './routes'
+const generatePath2 = create_generatePath()
+generatePath2({
+  to: '/',
+})
+generatePath({
+  to: '/',
+})
 
 // 1. Wrap all routes with `r` function. Same effect as `as const satisfies RouteObject[]`
 const routes = r(ALL_ROUTES)

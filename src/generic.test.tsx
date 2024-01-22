@@ -30,6 +30,13 @@ describe('Scoped routes (not using global Register interface)', () => {
   test('correct types', () => {
     const dontCallThisFn = () => {
       const params = scoped.useParams()
+      expectTypeOf(params).toEqualTypeOf<{
+        dynamic1?: string | undefined
+        dynamic2?: string | undefined
+        lang?: string | undefined
+        version?: string | undefined
+        '*'?: string | undefined
+      }>()
 
       const navigate = scoped.useNavigate()
       navigate({
@@ -54,15 +61,10 @@ describe('Scoped routes (not using global Register interface)', () => {
           version: 'latest',
         },
       })
-
       expectTypeOf(path).toEqualTypeOf<string>()
-      expectTypeOf(params).toEqualTypeOf<{
-        dynamic1?: string | undefined
-        dynamic2?: string | undefined
-        lang?: string | undefined
-        version?: string | undefined
-        '*'?: string | undefined
-      }>()
+      scoped.generatePath({
+        to: '/static',
+      })
 
       return (
         <>
