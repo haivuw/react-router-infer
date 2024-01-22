@@ -47,7 +47,7 @@ const routes = [...] as const satisfies RouteObject[]
 
 #### Defined in
 
-[core.ts:14](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/core.ts#L14)
+[core.ts:14](https://github.com/haivuw/react-router-infer/blob/22036aa/src/core.ts#L14)
 
 ___
 
@@ -59,7 +59,7 @@ Extends `react-router-dom`'s `RouteObject` with `parseSearch` fields
 
 #### Defined in
 
-[core.ts:35](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/core.ts#L35)
+[core.ts:35](https://github.com/haivuw/react-router-infer/blob/22036aa/src/core.ts#L35)
 
 ## Functions
 
@@ -100,7 +100,7 @@ const render = (
 
 #### Defined in
 
-[Link.tsx:24](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/Link.tsx#L24)
+[Link.tsx:24](https://github.com/haivuw/react-router-infer/blob/22036aa/src/Link.tsx#L24)
 
 ___
 
@@ -141,7 +141,7 @@ const render = (
 
 #### Defined in
 
-[NavLink.tsx:22](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/NavLink.tsx#L22)
+[NavLink.tsx:22](https://github.com/haivuw/react-router-infer/blob/22036aa/src/NavLink.tsx#L22)
 
 ___
 
@@ -171,7 +171,7 @@ const generatePath = create_generatePath({
 
 #### Defined in
 
-[generatePath.ts:26](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/generatePath.ts#L26)
+[generatePath.ts:26](https://github.com/haivuw/react-router-infer/blob/22036aa/src/generatePath.ts#L26)
 
 ___
 
@@ -212,7 +212,7 @@ import { redirect } from 'react-router-dom'
 
 #### Defined in
 
-[generatePath.ts:54](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/generatePath.ts#L54)
+[generatePath.ts:54](https://github.com/haivuw/react-router-infer/blob/22036aa/src/generatePath.ts#L54)
 
 ___
 
@@ -252,7 +252,7 @@ const singleRoute = r({ path: '/' })
 
 #### Defined in
 
-[core.ts:142](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/core.ts#L142)
+[core.ts:142](https://github.com/haivuw/react-router-infer/blob/22036aa/src/core.ts#L142)
 
 ___
 
@@ -281,7 +281,7 @@ const navigate = useNavigate()
 
 #### Defined in
 
-[useNavigate.ts:20](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/useNavigate.ts#L20)
+[useNavigate.ts:20](https://github.com/haivuw/react-router-infer/blob/22036aa/src/useNavigate.ts#L20)
 
 ___
 
@@ -317,7 +317,7 @@ const { id } = useParams({
 
 #### Defined in
 
-[useParams.ts:14](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/useParams.ts#L14)
+[useParams.ts:14](https://github.com/haivuw/react-router-infer/blob/22036aa/src/useParams.ts#L14)
 
 ___
 
@@ -369,7 +369,7 @@ const { search, setSearch, isInvalidRoute } = useSearch({
 
 #### Defined in
 
-[useSearch.ts:31](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/useSearch.ts#L31)
+[useSearch.ts:31](https://github.com/haivuw/react-router-infer/blob/22036aa/src/useSearch.ts#L31)
 
 ___
 
@@ -408,4 +408,4 @@ Wraps user defined routes with SearchParamsProvider
 
 #### Defined in
 
-[SearchContext.tsx:94](https://github.com/haivuw/react-router-infer/blob/eaa6d1d/src/SearchContext.tsx#L94)
+[SearchContext.tsx:94](https://github.com/haivuw/react-router-infer/blob/22036aa/src/SearchContext.tsx#L94)
