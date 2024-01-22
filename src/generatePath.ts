@@ -8,8 +8,7 @@ import * as RR from 'react-router-dom'
 import { ParserUtils } from './SearchContext'
 import { Any } from './util'
 
-export type GeneratePath = <
-  Routes extends BaseRoutes = RegisteredRoutes,
+export type GeneratePath<Routes extends BaseRoutes> = <
   To extends keyof Routes = keyof Routes,
 >(
   to: NavigateTo<Routes, To>,
@@ -23,12 +22,14 @@ export type GeneratePath = <
  *     stringifySearch: () => '?custom',
  *   })
  */
-export const create_generatePath = (
+export const create_generatePath = <
+  Routes extends BaseRoutes = RegisteredRoutes,
+>(
   opts?: Pick<ParserUtils, 'stringifySearch'>,
 ) => {
   const stringifySearch = opts?.stringifySearch ?? defaultStringifySearch
 
-  const generatePath: GeneratePath = (to) => {
+  const generatePath: GeneratePath<Routes> = (to) => {
     const pathname = RR.generatePath(to.to as string, to.params as Any)
     const search = to.search ? stringifySearch(to.search) : ''
     const hash = to.hash ?? ''

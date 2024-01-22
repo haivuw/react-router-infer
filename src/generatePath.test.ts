@@ -12,9 +12,11 @@ const routes = r([
 
 type Routes = CreateRoutes<typeof routes>
 
+const _generatePath = generatePath as GeneratePath<Routes>
+
 describe('generatePath', () => {
   test('default', () => {
-    const path = generatePath<Routes, '/:id'>({
+    const path = _generatePath<'/:id'>({
       to: '/:id',
       params: { id: '1' },
       search: { page: 1 },
@@ -25,16 +27,16 @@ describe('generatePath', () => {
   })
 
   test('create_generatePath', () => {
-    const generatePath = create_generatePath({
+    const generatePath = create_generatePath<Routes>({
       stringifySearch: () => '?custom',
     })
-    const path = generatePath<Routes, '/:id'>({
+    const path = generatePath({
       to: '/:id',
       params: { id: '1' },
       search: { page: 1 },
     })
 
     expect(path).toBe('/1?custom')
-    expectTypeOf(generatePath).toEqualTypeOf<GeneratePath>()
+    expectTypeOf(generatePath).toEqualTypeOf<GeneratePath<Routes>>()
   })
 })

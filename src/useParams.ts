@@ -1,7 +1,7 @@
 import { RegisteredRoutes } from '.'
 import { GetAllParams, BaseRoutes, ScopeOptions } from './core'
 import * as RR from 'react-router-dom'
-import { IsUnion, ToObject } from './util'
+import { Expand, IsUnion, ToObject } from './util'
 
 /**
  * @example
@@ -17,5 +17,6 @@ export type UseParams<Routes extends BaseRoutes = RegisteredRoutes> = <
   From extends string & keyof Routes = string & keyof Routes,
 >(
   _opts?: ScopeOptions<From>,
-) => IsUnion<From> extends true ? Partial<GetAllParams<Routes, 'params'>>
-: Partial<ToObject<Routes[From]['params']>>
+) => IsUnion<From> extends true ?
+  Expand<Partial<GetAllParams<Routes, 'params'>>>
+: Expand<Partial<ToObject<Routes[From]['params']>>>
