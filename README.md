@@ -15,7 +15,7 @@ A little type-safer [react-router-dom](https://github.com/remix-run/react-router
 
 ## Prerequisites
 
-- (maybe) `typescript` >= 5.3. This allows `r` helper or `[...] as const sastisfies RouteObject[]` to work. See [this PR](https://github.com/microsoft/TypeScript/pull/55229).
+- `typescript` >= 5.3. This allows `r` helper or `[...] as const sastisfies RouteObject[]` to work. See [this PR](https://github.com/microsoft/TypeScript/pull/55229).
 - `react-router-dom` >= 6.0.0. For `Outlet`, `RouteObject`.
 
 ## Quick start
