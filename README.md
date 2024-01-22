@@ -6,10 +6,10 @@ A little type-safer [react-router-dom](https://github.com/remix-run/react-router
 
 **What's covered**:
 
-- [useParams](docs/modules.md#useparams)
-- [useNavigate](docs/modules.md#usenavigate)
-- [Link](docs/modules.md#link)
-- [useSearch](docs/modules.md#usesearch)
+- [useParams](https://github.com/haivuw/react-router-infer/tree/main/docs/modules.md#useparams)
+- [useNavigate](https://github.com/haivuw/react-router-infer/tree/main/docs/modules.md#usenavigate)
+- [Link](https://github.com/haivuw/react-router-infer/tree/main/docs/modules.md#link)
+- [useSearch](https://github.com/haivuw/react-router-infer/tree/main/docs/modules.md#usesearch)
 
 ## Prerequisites
 

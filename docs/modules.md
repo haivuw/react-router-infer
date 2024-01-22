@@ -1,6 +1,6 @@
-[react-router-infer - v0.0.0](README.md) / Exports
+[react-router-infer - v0.1.0](README.md) / Exports
 
-# react-router-infer - v0.0.0
+# react-router-infer - v0.1.0
 
 ## Table of contents
 
@@ -44,7 +44,7 @@ const routes = [...] as const satisfies RouteObject[]
 
 #### Defined in
 
-[core.ts:14](https://github.com/haivuw/react-router-infer/blob/179c344/src/core.ts#L14)
+[core.ts:14](https://github.com/haivuw/react-router-infer/blob/449bf32/src/core.ts#L14)
 
 ___
 
@@ -56,7 +56,7 @@ Extends `react-router-dom`'s `RouteObject` with `parseSearch` fields
 
 #### Defined in
 
-[core.ts:35](https://github.com/haivuw/react-router-infer/blob/179c344/src/core.ts#L35)
+[core.ts:35](https://github.com/haivuw/react-router-infer/blob/449bf32/src/core.ts#L35)
 
 ## Functions
 
@@ -97,7 +97,7 @@ const render = (
 
 #### Defined in
 
-[Link.tsx:24](https://github.com/haivuw/react-router-infer/blob/179c344/src/Link.tsx#L24)
+[Link.tsx:24](https://github.com/haivuw/react-router-infer/blob/449bf32/src/Link.tsx#L24)
 
 ___
 
@@ -137,7 +137,7 @@ const singleRoute = r({ path: '/' })
 
 #### Defined in
 
-[core.ts:142](https://github.com/haivuw/react-router-infer/blob/179c344/src/core.ts#L142)
+[core.ts:142](https://github.com/haivuw/react-router-infer/blob/449bf32/src/core.ts#L142)
 
 ___
 
@@ -172,7 +172,7 @@ const navigate = useNavigate()
 
 #### Defined in
 
-[useNavigate.ts:20](https://github.com/haivuw/react-router-infer/blob/179c344/src/useNavigate.ts#L20)
+[useNavigate.ts:20](https://github.com/haivuw/react-router-infer/blob/449bf32/src/useNavigate.ts#L20)
 
 ___
 
@@ -209,7 +209,7 @@ const { id } = useParams({
 
 #### Defined in
 
-[useParams.ts:14](https://github.com/haivuw/react-router-infer/blob/179c344/src/useParams.ts#L14)
+[useParams.ts:14](https://github.com/haivuw/react-router-infer/blob/449bf32/src/useParams.ts#L14)
 
 ___
 
@@ -262,7 +262,7 @@ const { search, setSearch, isInvalidRoute } = useSearch({
 
 #### Defined in
 
-[useSearch.ts:31](https://github.com/haivuw/react-router-infer/blob/179c344/src/useSearch.ts#L31)
+[useSearch.ts:31](https://github.com/haivuw/react-router-infer/blob/449bf32/src/useSearch.ts#L31)
 
 ___
 
@@ -301,4 +301,4 @@ Wraps user defined routes with SearchParamsProvider
 
 #### Defined in
 
-[SearchContext.tsx:98](https://github.com/haivuw/react-router-infer/blob/179c344/src/SearchContext.tsx#L98)
+[SearchContext.tsx:98](https://github.com/haivuw/react-router-infer/blob/449bf32/src/SearchContext.tsx#L98)
