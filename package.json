@@ -35,7 +35,7 @@
     }
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^13.3.1",
+    "@happy-dom/global-registrator": "^13.3.4",
     "@size-limit/preset-small-lib": "^11.0.2",
     "@testing-library/react": "^14.1.2",
     "@types/react": "^18.2.48",
