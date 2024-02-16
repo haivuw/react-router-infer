@@ -17,7 +17,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "6.21.3",
     "react-router-infer": "file:../",
-    "swr": "^2.2.4",
+    "swr": "^2.2.5",
     "valibot": "^0.28.1",
     "zod": "^3.22.4"
   },
