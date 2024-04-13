@@ -6,7 +6,6 @@ import {
   Link,
   NavLink,
 } from 'react-router-infer'
-import * as RR from 'react-router-dom'
 import * as v from 'valibot'
 import { Outlet } from 'react-router-dom'
 import { pokemonRoute } from './pokemon'
@@ -31,7 +30,6 @@ function RootLayout() {
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/book'>Books</NavLink>
           <NavLink to='/pokemon'>Pokemon</NavLink>
-          <RR.NavLink to='/mutable'>Mutable</RR.NavLink>
         </nav>
         <Outlet />
       </div>
@@ -157,38 +155,6 @@ export const rootIndexRoute = r({
   element: <RootIndexPage />,
 })
 
-// an example of a route whose structure can't be check statically. You can still use `react-router-dom`'s components with it.
-const createMutableRoute = (mutablePath: string) => {
-  return {
-    path: mutablePath,
-    Component: () => {
-      return (
-        <div className='bg-slate-50 p-4 rounded'>
-          <h1>{'/' + mutablePath}</h1>
-          <p>
-            This route is not checked statically. You can still use
-            `react-router-dom`'s components with it.
-          </p>
-          <RR.Link to='/mutable/mutable.1'>Unsafe Link to mutable.1</RR.Link>
-          <Outlet />
-        </div>
-      )
-    },
-    children: [
-      {
-        path: mutablePath + '.1',
-        Component: () => {
-          return (
-            <div className='bg-slate-50 p-4 rounded'>
-              <h1>{'/' + mutablePath + '.1'}</h1>
-            </div>
-          )
-        },
-      },
-    ],
-  } satisfies RR.RouteObject
-}
-
 export const ALL_ROUTES = r([
   {
     path: '/',
@@ -198,7 +164,6 @@ export const ALL_ROUTES = r([
       rootIndexRoute,
       bookRoute,
       pokemonRoute,
-      createMutableRoute('mutable'),
     ],
   },
 ])
