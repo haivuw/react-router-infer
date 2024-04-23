@@ -19,7 +19,7 @@
     "react-router-infer": "file:../",
     "swr": "^2.2.5",
     "valibot": "^0.30.0",
-    "zod": "^3.23.0"
+    "zod": "^3.23.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.79",
