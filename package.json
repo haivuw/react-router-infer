@@ -50,7 +50,7 @@
     "tsup": "^8.1.0",
     "typedoc": "^0.26.3",
     "typedoc-plugin-markdown": "^4.1.1",
-    "typescript": "^5.5.2",
+    "typescript": "^5.5.3",
     "zod": "^3.23.8"
   },
   "peerDependencies": {
